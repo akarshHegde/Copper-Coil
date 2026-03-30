@@ -1,0 +1,166 @@
+:root {
+  color-scheme: light;
+  --bg: #f4efe6;
+  --panel: #fffaf1;
+  --border: #332c21;
+  --grid: #d6cab8;
+  --snake: #2f6b3b;
+  --snake-head: #1f4a28;
+  --food: #b7412c;
+  --text: #241f19;
+  --muted: #5e564a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.app {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  padding: 24px;
+}
+
+.panel {
+  width: min(100%, 720px);
+  padding: 24px;
+  border: 2px solid var(--border);
+  background: var(--panel);
+  box-shadow: 8px 8px 0 rgba(51, 44, 33, 0.12);
+}
+
+.panel__header,
+.status-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.eyebrow {
+  margin: 0 0 4px;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+}
+
+.scoreboard {
+  text-align: right;
+}
+
+.scoreboard span {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.scoreboard strong {
+  font-size: 2rem;
+}
+
+.status-row {
+  margin: 20px 0 16px;
+  flex-wrap: wrap;
+}
+
+.status-row p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.actions,
+.controls,
+.controls__middle {
+  display: flex;
+  gap: 12px;
+}
+
+button {
+  border: 2px solid var(--border);
+  background: #efe4d1;
+  color: var(--text);
+  padding: 10px 14px;
+  font: inherit;
+  cursor: pointer;
+}
+
+button:hover,
+button:focus-visible {
+  background: #e5d6bd;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(16, minmax(0, 1fr));
+  gap: 2px;
+  padding: 2px;
+  border: 2px solid var(--border);
+  background: var(--grid);
+  aspect-ratio: 1;
+}
+
+.cell {
+  background: #f7f1e8;
+}
+
+.cell--snake {
+  background: var(--snake);
+}
+
+.cell--head {
+  background: var(--snake-head);
+}
+
+.cell--food {
+  background: var(--food);
+}
+
+.controls {
+  margin-top: 16px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.control {
+  min-width: 80px;
+}
+
+.control--up {
+  align-self: center;
+}
+
+@media (max-width: 640px) {
+  .panel {
+    padding: 16px;
+  }
+
+  .board {
+    width: 100%;
+  }
+
+  .actions,
+  .controls__middle {
+    width: 100%;
+  }
+
+  .actions button,
+  .controls__middle button,
+  .control--up {
+    flex: 1;
+  }
+}
